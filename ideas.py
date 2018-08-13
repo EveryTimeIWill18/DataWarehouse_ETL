@@ -31,6 +31,18 @@ while c < len(index_cols):
 #    if list(names_dict.keys())[i] in list(jan_18.columns):
 jan_18.rename(columns = names_dict, inplace=True) #this will rename columns
 
+
+
 id_num = 6000
 new_id = 'c' + str(id_num)
-#for c in list(jan_18.columns):
+for c in list(jan_18.columns):
+    if len(c) >= 10:
+        new_id = 'c' + str(id_num)
+        #print(jan_18['{}'.format(c)].head())
+        jan_18.rename(columns = {c: new_id}, inplace=True)
+        #jan_18['{}'.format(c)].rename(columns = new_id, inplace=True)
+        #pprint(new_id)
+        id_num += 1
+
+pprint(list(jan_18.columns))
+
